@@ -1,0 +1,21 @@
+# deps
+node_modules/
+
+# env
+.env
+
+# logs
+*.log
+
+# OS
+*.DS_Store
+
+# coverage
+coverage
+.nyc_output
+
+# db-data
+.db-data
+
+# deployment package
+.serverless
