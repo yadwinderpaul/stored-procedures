@@ -35,24 +35,15 @@ if (!command || commands.indexOf(command) < 0) {
 
       await client.connect()
 
-      const promiseSerial = funcs =>
-        funcs.reduce((promise, func) =>
-          promise
-            .then(result => {
-              func()
-                .then(Array.prototype.concat.bind(result))
-            })
-        , Promise.resolve([]))
-
-      const promises = migrations.map(migration => {
+      for (let migration of migrations) {
         console.log(`Executing: ${migration.name}`)
-        return client.query(migration.sql)
-      })
+        await client.query(migration.sql)
+      }
 
-      promiseSerial(promises)
       console.log('Done')
     } catch (error) {
       console.log(`Error in executing migration: ${error.message}`)
+    } finally {
       await client.end()
     }
   })()

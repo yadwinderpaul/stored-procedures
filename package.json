@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "migrate": "node scripts/migrate",
     "invoke": "serverless invoke local --function app --path sample-input.json",
     "deploy": "serverless deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
